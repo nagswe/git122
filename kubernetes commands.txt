@@ -1,0 +1,33 @@
+ 1  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    2  unzip awscliv2.zip
+    3  sudo ./aws/install
+    4  ls
+    5  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    6  wget https://github.com/kubernetes/kops/releases/download/v1.24.1/kops-linux-amd64
+    7  ll
+    8  chmod 777 kops-linux-amd64 kubectl
+    9  ll
+   10  mv kubectl /usr/local/bin/kubectl
+   11  mv kops-linux-amd64 /usr/local/bin/kops
+   12  vim .bashrc
+       export PATH=$PATH:/usr/local/bin
+   13  kops --version
+   14  kubectl --version
+   15  aws --version
+   16  source .bashrc
+   18  kops version
+   19  kubectl version
+   20  aws configure
+       output format table
+   21  aws s3api create-bucket --bucket nagesh.k8s.local --region us-east-1
+   22  aws s3api put-bucket-versioning --bucket nagesh.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+   23  export KOPS_STATE_STORE=s3://nagesh.k8s.local
+   24  kops create cluster --name nagesh.k8s.local --zones us-east-1a --master-size t2.medium --node-size t2.micro
+   25  kops get cluster
+   26  kops edit cluster nagesh.k8s.local
+   27  kops edit ig --name=nagesh.k8s.local nodes-us-east-1a
+   28  kops update cluster --name nagesh.k8s.local --yes --admin
+   29  kops validate cluster --wait 10m
+   30  kubectl get nodes
+   31  kubectl get nodes -o wide
+   33  kops delete cluster --name nagesh.k8s.local --yes
