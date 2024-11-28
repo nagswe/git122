@@ -1,0 +1,15 @@
+whoami
+sudo -i
+for logout press  ctrl+d (or) logout command
+sudo su-
+ip addr
+ip addr show
+hostnamectl set-hostname raham
+hostnamectl set-hostname ip address
+cal command for calender
+cal nov 2021
+time datectl
+w command which user was login in the system or who command
+
+
+
